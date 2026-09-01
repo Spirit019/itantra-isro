@@ -1,0 +1,80 @@
+{
+  "project": "iTantra Neural Transceiver",
+  "version": "1.0.0",
+  "organization": "ISRO / Smart India Hackathon 2026",
+  "models": {
+    "vad": {
+      "name": "Silero VAD v5",
+      "format": "ONNX",
+      "quantization": "FP32/INT8",
+      "size_mb": 1.8,
+      "sample_rate": 16000,
+      "file": "silero_vad.onnx",
+      "url": "https://github.com/snakers4/silero-vad/raw/master/src/silero_vad/data/silero_vad.onnx",
+      "description": "Voice Activity Detection evaluates 32ms audio frames in <0.8ms"
+    },
+    "asr": {
+      "framework": "Sherpa-ONNX / Next-gen Kaldi",
+      "architecture": "AI4Bharat IndicConformer RNN-T Transducer",
+      "quantization": "INT8 Dynamic",
+      "avg_wer": "13.44%",
+      "real_time_factor": 0.14,
+      "unified_model_url": "https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-indic-10-languages-2024-03-13",
+      "languages": {
+        "hi": { "name": "Hindi", "encoder": "encoder-hi.int8.onnx", "size_mb": 22.4 },
+        "ta": { "name": "Tamil", "encoder": "encoder-ta.int8.onnx", "size_mb": 21.8 },
+        "bn": { "name": "Bengali", "encoder": "encoder-bn.int8.onnx", "size_mb": 22.1 },
+        "te": { "name": "Telugu", "encoder": "encoder-te.int8.onnx", "size_mb": 21.5 },
+        "mr": { "name": "Marathi", "encoder": "encoder-mr.int8.onnx", "size_mb": 21.9 },
+        "en": { "name": "English (IN)", "encoder": "encoder-en.int8.onnx", "size_mb": 20.8 }
+      }
+    },
+    "tts": {
+      "framework": "Piper VITS / Vocos Neural Vocoder",
+      "quantization": "INT8 ONNX",
+      "avg_mos": "4.26 / 5.0",
+      "languages": {
+        "hi": {
+          "name": "Hindi (हिंदी)",
+          "voice": "dhiru-medium",
+          "model_file": "hi_IN-dhiru-medium.onnx",
+          "config_file": "hi_IN-dhiru-medium.onnx.json",
+          "size_mb": 42.1,
+          "download_url": "https://huggingface.co/rhasspy/piper-voices/resolve/main/hi/hi_IN/dhiru/medium/hi_IN-dhiru-medium.onnx"
+        },
+        "ta": {
+          "name": "Tamil (தமிழ்)",
+          "voice": "jaya-medium",
+          "model_file": "ta_IN-jaya-medium.onnx",
+          "config_file": "ta_IN-jaya-medium.onnx.json",
+          "size_mb": 40.4,
+          "download_url": "https://huggingface.co/rhasspy/piper-voices/resolve/main/ta/ta_IN/jaya/medium/ta_IN-jaya-medium.onnx"
+        },
+        "bn": {
+          "name": "Bengali (বাংলা)",
+          "voice": "tanmoy-medium",
+          "model_file": "bn_IN-tanmoy-medium.onnx",
+          "config_file": "bn_IN-tanmoy-medium.onnx.json",
+          "size_mb": 41.2,
+          "download_url": "https://huggingface.co/rhasspy/piper-voices/resolve/main/bn/bn_IN/tanmoy/medium/bn_IN-tanmoy-medium.onnx"
+        },
+        "mr": {
+          "name": "Marathi (मराठी)",
+          "voice": "suhas-medium",
+          "model_file": "mr_IN-suhas-medium.onnx",
+          "config_file": "mr_IN-suhas-medium.onnx.json",
+          "size_mb": 39.8,
+          "download_url": "https://huggingface.co/rhasspy/piper-voices/resolve/main/mr/mr_IN/suhas/medium/mr_IN-suhas-medium.onnx"
+        },
+        "en": {
+          "name": "English (Indian)",
+          "voice": "cpc_female-medium",
+          "model_file": "en_IN-cpc_female-medium.onnx",
+          "config_file": "en_IN-cpc_female-medium.onnx.json",
+          "size_mb": 38.6,
+          "download_url": "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_IN/cpc_female/medium/en_IN-cpc_female-medium.onnx"
+        }
+      }
+    }
+  }
+}
